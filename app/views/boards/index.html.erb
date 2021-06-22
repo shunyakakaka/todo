@@ -1,0 +1,24 @@
+<%= link_to "新規作成", new_board_path, class: "ui button" %>
+<div class="ui table">
+  <caption>TODOリスト</caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>作成者</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <th><%=board.id%></th>
+        <th><%=board.title%></th>
+        <th><%=board.name%></th>
+        <th><%=board.created_at%></th>
+        <th><%=board.updated_at%></th>
+      </tr>
+    <% end %>
+  </tbody>
+</div>

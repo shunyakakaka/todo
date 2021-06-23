@@ -2,6 +2,11 @@
   <div class="ui aligned right header">
     <%= link_to "新規作成", new_board_path, class: "ui button" %>
   </div>
+  <% if flash[:notice] %>
+    <div class="ui negative message ui center aligned header">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
   <table class="ui selectable table">
     <caption><p>TODOリスト</p></caption>
     <thead>
@@ -28,3 +33,4 @@
     </tbody>
   </table>
 </div>
+<%= paginate @boards %>

@@ -1,17 +1,42 @@
+<% if flash[:error_message] %>
+  <div class="ui nagative message">
+    <% flash[:error_message].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </div>
+<% end %>
 <div class="ui form">
-  <%= form_with model: board, url: board_path(board.id) do |f|%>
-    <div class="field">
-      <%= f.label :name, "名前" %>
-      <%= f.text_field :name%>
-    </div>
-    <div class="field">
-      <%= f.label :title, "タイトル" %>
-      <%= f.text_field :title%>
-    </div>
-    <div class="field">
-      <%= f.label :body, "本文" %>
-      <%= f.text_area :body, rows: "15" %>
-    </div>
-    <%= f.submit "保存", class: "ui button blue"%>
+  <% if board.id %>
+    <%= form_with model: board, url: board_path(board.id) do |f|%>
+      <div class="field">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name%>
+      </div>
+      <div class="field">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title%>
+      </div>
+      <div class="field">
+        <%= f.label :body, "本文" %>
+        <%= f.text_area :body, rows: "15" %>
+      </div>
+      <%= f.submit "保存", class: "ui button blue"%>
+    <% end %>
+  <% else %>
+    <%= form_with model: board, url: boards_path do |f|%>
+      <div class="field">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name%>
+      </div>
+      <div class="field">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title%>
+      </div>
+      <div class="field">
+        <%= f.label :body, "本文" %>
+        <%= f.text_area :body, rows: "15" %>
+      </div>
+      <%= f.submit "保存", class: "ui button blue"%>
+    <% end %>
   <% end %>
 </div>

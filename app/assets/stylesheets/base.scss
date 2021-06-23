@@ -1,6 +1,14 @@
 // Place all the styles related to the boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-header {
+body {
   margin-top: 30px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.row {
+  background-color: white;
 }

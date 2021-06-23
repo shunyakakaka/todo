@@ -1,24 +1,30 @@
-<%= link_to "新規作成", new_board_path, class: "ui button" %>
-<div class="ui table">
-  <caption>TODOリスト</caption>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>作成者</th>
-      <th>作成日時</th>
-      <th>更新日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @boards.each do |board| %>
+<div class="ui container">
+  <div class="ui aligned right header">
+    <%= link_to "新規作成", new_board_path, class: "ui button" %>
+  </div>
+  <table class="ui selectable table">
+    <caption><p>TODOリスト</p></caption>
+    <thead>
       <tr>
-        <th><%=board.id%></th>
-        <th><%=board.title%></th>
-        <th><%=board.name%></th>
-        <th><%=board.created_at%></th>
-        <th><%=board.updated_at%></th>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>作成者</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @boards.each do |board| %>
+        <tr>
+          <td><%=board.id%></td>
+          <td><%=board.title%></td>
+          <td><%=board.name%></td>
+          <td><%=board.created_at.to_s(:datetime_jp) %></td>
+          <td><%=board.updated_at.to_s(:datetime_jp) %></td>
+          <td><%= link_to "詳細", board_path(board.id), class: "ui button" %></td>
+          <td><%= link_to "削除", board_path(board.id), method: :delete, class: "ui button" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

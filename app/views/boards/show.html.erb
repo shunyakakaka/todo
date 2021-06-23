@@ -1,0 +1,5 @@
+<div class="ui aligned right header">
+  <%= link_to "一覧", boards_path, class: "ui button" %>
+  <%= link_to "編集", edit_board_path(@board), class: "ui button" %>
+</div>
+<%= render partial: "board", object: @board %>

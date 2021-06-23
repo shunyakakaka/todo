@@ -1,0 +1,17 @@
+<div class="ui form">
+  <%= form_with model: board, url: board_path(board.id) do |f|%>
+    <div class="field">
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name%>
+    </div>
+    <div class="field">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title%>
+    </div>
+    <div class="field">
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body, rows: "15" %>
+    </div>
+    <%= f.submit "保存", class: "ui button blue"%>
+  <% end %>
+</div>

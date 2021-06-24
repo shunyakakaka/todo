@@ -1,0 +1,18 @@
+<%= render "shared/error_messages"%>
+<div class="ui segment">
+  <div class="ui form">
+    <div class="ui dividing header">コメント記入</div>
+    <%= form_with model: @comment, url: comments_path do |f|%>
+      <%= f.hidden_field :board_id %>
+      <div class="field">
+        <%= f.label :name, "名前"%>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :comment, "コメント" %>
+        <%= f.text_area :comment %>
+      </div>
+      <%= f.submit "送信", class: "ui blue button" %>
+    <% end %>
+  </div>
+</div>

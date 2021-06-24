@@ -1,6 +1,9 @@
 <div class="ui segments">
   <div class="ui segment">
     <h3><%= board.title %></h3>
+    <% board.tags.each do |tag|%>
+      <p class="ui blue header"><%= tag.name %></p>
+    <% end %>
   </div>
   <div class="ui secondary segment row" >
     <div class="ui grid">

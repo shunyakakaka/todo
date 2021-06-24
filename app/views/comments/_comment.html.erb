@@ -1,0 +1,9 @@
+<div class="comment">
+  <p><%= simple_format(comment.comment) %></p>
+  <div class="ui grid">
+    <p><%= comment.name %></p>
+    <p><%= comment.created_at.to_s(:datetime_jp) %>
+  </div>
+  <%= link_to "削除", comment_path(comment.id), method: :delete, data: {confirm: "削除してもよろしいですか？"}, class: "ui button" %>
+  <div class="ui divider"></div>
+</div>

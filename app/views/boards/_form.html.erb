@@ -1,13 +1,7 @@
-<% if flash[:error_message] %>
-  <div class="ui nagative message">
-    <% flash[:error_message].each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </div>
-<% end %>
+<%= render "shared/error_messages"%>
 <div class="ui form">
   <% if board.id %>
-    <%= form_with model: board, url: board_path(board.id) do |f|%>
+    <%= form_with model: board, url: board_path(board.id), method: :patch do |f|%>
       <div class="field">
         <%= f.label :name, "名前" %>
         <%= f.text_field :name%>
@@ -19,6 +13,15 @@
       <div class="field">
         <%= f.label :body, "本文" %>
         <%= f.text_area :body, rows: "15" %>
+      </div>
+      <div class="field">
+        <p>タグ</p>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name ) do |tag| %>
+          <div class="ui checkbox">
+            <%= tag.check_box class: "checkbox" %>
+            <%= tag.label %>
+          </div>
+        <% end %>
       </div>
       <%= f.submit "保存", class: "ui button blue"%>
     <% end %>
@@ -35,6 +38,15 @@
       <div class="field">
         <%= f.label :body, "本文" %>
         <%= f.text_area :body, rows: "15" %>
+      </div>
+      <div class="field">
+        <p>タグ</p>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name ) do |tag| %>
+          <div class="ui checkbox">
+            <%= tag.check_box class: "checkbox" %>
+            <%= tag.label %>
+          </div>
+        <% end %>
       </div>
       <%= f.submit "保存", class: "ui button blue"%>
     <% end %>

@@ -5,3 +5,10 @@ ja:
         name: 名前
         title: タイトル
         body: 本文
+    attributes:
+      comment:
+        name: 名前
+        comment: コメント
+    attributes:
+      tag:
+          name: 名前

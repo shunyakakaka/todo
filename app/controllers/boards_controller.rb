@@ -19,9 +19,11 @@ class BoardsController < ApplicationController
         error_message: board.errors.full_messages
       }
     end
+    binding.pry
   end
 
   def show
+    @comment = Comment.new(board_id: @board.id)
   end
 
   def edit
@@ -29,19 +31,25 @@ class BoardsController < ApplicationController
 
   def update
     @board.update(board_params)
-
-    redirect_to board_path(@board.id)
+    if @board.save
+      flash[:notice] = "編集しました"
+      redirect_to board_path(@board.id)
+    else
+      redirect_to edit_board_path, flash: {board: @board,
+        error_message: @board.errors.full_messages
+      }
+    end
   end
 
   def destroy
-    @board.delete
+    @board.destroy
     flash[:notice] = "「#{@board.title}」を削除しました。"
     redirect_to boards_path
   end
 
   private
   def board_params
-    params.require(:board).permit(:name, :title, :body)
+    params.require(:board).permit(:name, :title, :body, tag_ids: [] )
   end
   
   def set_target_before

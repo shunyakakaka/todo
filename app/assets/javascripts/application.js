@@ -14,3 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+// ドロップダウンを使用するためのコード
+$(function(){
+  $('.ui.dropdown').dropdown();
+})
